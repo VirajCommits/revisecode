@@ -8,5 +8,15 @@
         "src": "/(.*)",
         "dest": "/index.html"
       }
+    ],
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "buildCommand": "npm run build",
+          "outputDirectory": "dist/my-angular-app"
+        }
+      }
     ]
   }

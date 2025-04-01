@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="username">
+    <h1>Enter your LeetCode Username</h1>
+    <div class="input-group">
+      <input 
+        [(ngModel)]="username" 
+        type="text" 
+        placeholder="e.g., VariableViking"
+        (keyup.enter)="getUserInfo()"
+      >
+      <button 
+        (click)="getUserInfo()" 
+        [disabled]="!username.trim()"
+      >
+        Get My Stats
+      </button>
+    </div>
+  </div>
+  
+  <section class="recent-problems" *ngIf="recentProblems.length > 0">
+    <h2>Recent Solved Problems</h2>
+    <p class="subtitle">Which problems did you struggle with? Flag them for later review.</p>
+    
+    <div class="problems-grid">
+      <button 
+        class="problem-btn" 
+        (click)="openNotePopup(problem)" 
+        *ngFor="let problem of recentProblems"
+      >
+        <span class="problem-title">{{problem.title}}</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="flagged-section">
+    <app-flagged-questions #flaggedQuestions [username]="username"></app-flagged-questions>
+  </section>
+</div>
+
+<app-note-popup 
+  [isVisible]="showNotePopup"
+  (saveNote)="saveNote($event)"
+  (close)="closeNotePopup()"
+></app-note-popup>
+
+<div class="success-message" *ngIf="showSuccessMessage">
+  Problem saved successfully!
+</div>

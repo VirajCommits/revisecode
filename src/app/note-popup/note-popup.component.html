@@ -1,0 +1,14 @@
+<div class="popup-overlay" *ngIf="isVisible">
+  <div class="popup-content">
+    <h3>Add Notes</h3>
+    <textarea 
+      [(ngModel)]="note" 
+      placeholder="Enter your notes about solving this problem..."
+      rows="4"
+    ></textarea>
+    <div class="button-group">
+      <button class="save-btn" (click)="onSave()">Save</button>
+      <button class="cancel-btn" (click)="onClose()">Cancel</button>
+    </div>
+  </div>
+</div>

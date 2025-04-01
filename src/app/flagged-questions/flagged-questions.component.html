@@ -1,0 +1,29 @@
+<div class="flagged-questions-container">
+  <h2>Flagged Questions</h2>
+  
+  <div *ngIf="flaggedProblems.length === 0" class="no-problems">
+    <p>No flagged questions yet.</p>
+  </div>
+
+  <div *ngIf="flaggedProblems.length > 0" class="problems-list">
+    <div *ngFor="let problem of flaggedProblems" class="problem-card">
+      <div class="problem-content">
+        <h3>{{ problem.title }}</h3>
+        <a [href]="problem.url" target="_blank" class="leetcode-link">
+          View on LeetCode
+        </a>
+        <div class="note-section" *ngIf="problem.note">
+          <button class="note-btn" (click)="toggleNote(problem.id)">
+            {{ showNotes[problem.id] ? 'Hide Note' : 'Show Note' }}
+          </button>
+          <div class="note-content" *ngIf="showNotes[problem.id]">
+            {{ problem.note }}
+          </div>
+        </div>
+      </div>
+      <button (click)="removeProblem(problem.id)" class="remove-btn">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@
         "use": "@vercel/static-build",
         "config": {
           "buildCommand": "npm run vercel-build",
-          "outputDirectory": "dist/my-angular-app/browser"
+          "outputDirectory": "dist/my-angular-app"
         }
       }
     ]
